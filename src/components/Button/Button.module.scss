@@ -7,3 +7,10 @@
   border: 3px solid #1E58FF;
   color: #1E58FF;
 }
+
+.secondary {
+  @extend .button;
+
+  background-color: #1E58FF;
+  color: white;
+}

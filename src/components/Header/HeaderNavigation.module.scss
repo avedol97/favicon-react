@@ -1,9 +1,7 @@
-.wrapper{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-}
 
 .navItem {
+  display: inline-block;
+  margin-left: 150px;
   list-style: none;
 
   &Link{
