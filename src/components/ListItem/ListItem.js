@@ -1,17 +1,17 @@
 import React from 'react';
 import './ListItem.css';
 
-const ListItem = (props) =>(
+const ListItem = (image,name,description,twitterLink) =>(
 <li className="listItem__wrapper">
     <img
-        alt={props.name}
-        src={props.image}
+        alt={name}
+        src={image}
         className="listItem__image"/>
     <div>
         <h2 className="listItem__name">{props.name}</h2>
         <p className="listItem__description">
-            {props.description}</p>
-        <a href={props.link} className="listItem__button">visit twitter page</a>
+            {description}</p>
+        <a href={twitterLink} className="listItem__button">visit twitter page</a>
     </div>
 </li>
 )
