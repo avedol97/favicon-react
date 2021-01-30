@@ -1,9 +1,10 @@
 import '../../App.css';
 import './index.css';
 import * as React from "react";
-import List from "../../components/List/List";
-import Form from "../../components/Form/Form";
-
+import {Route,BrowserRouter} from "react-router-dom";
+import TwittersView from "../TwittersView/TwittersView";
+import ArticlesView from "../ArticlesView/ArticlesView";
+import NotesView from "../NotesView/NotesView";
 const initialStateItems = [
     {
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Malevich.black-square.jpg/606px-Malevich.black-square.jpg',
@@ -56,10 +57,15 @@ class Root extends React.Component {
 
     render() {
         return (
-            <div >
-                <List items={this.state.items}/>
-                <Form submitFn={this.addItem}/>
-            </div>
+            <BrowserRouter>
+                < >
+                    <h1>Helooo</h1>
+                    <Route exact path="/" component={TwittersView}/>
+                    <Route path="/articles" component={ArticlesView}/>
+                    <Route path="/notes" component={NotesView}/>
+                </>
+            </BrowserRouter>
+
         )
     }
 
