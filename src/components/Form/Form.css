@@ -1,0 +1,22 @@
+.form__wrapper{
+    text-align: center;
+    color: #1E58FF;
+
+}
+
+.form__form {
+    text-align: center;
+    color: black;
+}
+
+.form__item {
+    padding: 0 0 20px;
+    text-decoration: none;
+    border: burlywood;
+    background:transparent;
+}
+
+.form__button {
+    text-align: center;
+    border-radius: blue;
+}
