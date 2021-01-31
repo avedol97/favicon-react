@@ -1,11 +1,26 @@
-.listItem__wrapper {
+@keyframes appear {
+    0% {
+        opacity: 0;
+        top: 35px;
+    }
+    100% {
+        opacity: 1;
+        top: 0;
+    }
+
+}
+
+
+.wrapper {
     list-style: none;
     padding: 50px 30px;
     display: flex;
     align-items: center;
+    position: relative;
+    animation: appear .5s ease;
 }
 
-.listItem__image {
+.image {
     flex-shrink: 0;
     margin-right: 30px;
     width: 150px;
@@ -13,19 +28,19 @@
     border-radius: 50%;
 }
 
-.listItem__name {
+.name {
     margin: 0;
     color: #1E58FF;
     font-weight: 700;
 }
 
-.listItem__description {
+.description {
     font-weight: 300;
     margin: 10px 0 20px;
 
 }
 
-.listItem__button {
+.button {
     font-size: 10px;
     text-decoration: none;
     padding: 7px 12px;
