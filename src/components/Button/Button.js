@@ -10,7 +10,7 @@ const Button = ({children, href, secondary, ...props}) => {
                 href ?
                     (
                         <a
-                            href={href}
+                            href={'//'+href}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={buttonClass}>{children}</a>

@@ -7,57 +7,26 @@ import ArticlesView from "../ArticlesView/ArticlesView";
 import NotesView from "../NotesView/NotesView";
 import Modal from "../../components/Modal/Modal";
 import Header from "../../components/Header/Header";
-
-const initialStateItems = [
-    {
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Malevich.black-square.jpg/606px-Malevich.black-square.jpg',
-        name: 'Dan Abramov',
-        description: 'Dan Abramov is a software engineer at Facebook.\n' +
-            '            Together with Andrew Clark, he created Redux.',
-        twitterLink: 'https://twitter.com/dan_abramov',
-    },
-    {
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Malevich.black-square.jpg/606px-Malevich.black-square.jpg',
-        name: 'Ryan Florence',
-        description: 'Ryan started making websites for a local ISP before JavaScript or CSS were created.',
-        twitterLink: 'https://twitter.com/ryanflorence',
-    },
-    {
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Malevich.black-square.jpg/606px-Malevich.black-square.jpg',
-        name: 'Michael Jackson',
-        description: 'Building @remix_run. Built @unpkg, 2B+ hits per day.',
-        twitterLink: 'https://twitter.com/mjackson',
-    },
-    {
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Malevich.black-square.jpg/606px-Malevich.black-square.jpg',
-        name: 'Kent C. Dodds',
-        description: 'Hi, Im Kent C. Dodds. I help people make the word better through quality software',
-        twitterLink: 'https://twitter.com/kentcdodds',
-    },
-]
+import AppContext from "../../context";
 
 class Root extends React.Component {
-
     state = {
-        items: [...initialStateItems],
+        twitter: [],
+        article: [],
+        note: [],
         isModalOpen: false,
     }
 
-    addItem = (e) => {
+    addItem = (e,newItem) => {
         e.preventDefault();
 
-        const newItem = {
-            name: e.target[0].value,
-            twitterLink: e.target[1].value,
-            image: e.target[2].value,
-            description: e.target[3].value,
-        }
-        this.setState(prevState =>({
-            items: [...prevState.items,newItem]
+        this.setState(prevState => ({
+            [newItem.type]: [...prevState[newItem.type],newItem],
         }));
 
-        e.target.reset();
-    }
+        this.closeModal();
+
+    };
 
     openModal = () => {
         this.setState({
@@ -72,18 +41,21 @@ class Root extends React.Component {
 
     render() {
         const {isModalOpen} = this.state;
+        const contextElements = {
+            ...this.state,
+            addItem: this.addItem
+        }
         return (
             <BrowserRouter>
-                < >
-                    <Header openModalfn ={this.openModal}/>
-                    <h1>Helooo</h1>
+                <AppContext.Provider value={contextElements}>
+                    <Header openModalfn={this.openModal}/>
                     <Switch>
-                    <Route exact path="/" component={TwittersView}/>
-                    <Route path="/articles" component={ArticlesView}/>
-                    <Route path="/notes" component={NotesView}/>
+                        <Route exact path="/" component={TwittersView}/>
+                        <Route path="/articles" component={ArticlesView}/>
+                        <Route path="/notes" component={NotesView}/>
                     </Switch>
                     {isModalOpen && <Modal closeModalFn={this.closeModal}/>}
-                </>
+                </AppContext.Provider>
             </BrowserRouter>
 
         )
