@@ -16,5 +16,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  &Options{
+    flex-direction: row;
+    justify-content: center;
+  }
 }
+
+
 
