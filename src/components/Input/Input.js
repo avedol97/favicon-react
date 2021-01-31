@@ -5,11 +5,12 @@ import * as PropTypes from "prop-types";
 const Input = ({tag: Tag, name, label, maxLength}) => (
     <div className={styles.formItem}>
         <Tag
-            className={styles.input}
+            className={ Tag === 'textarea' ? styles.textarea :styles.input}
             type="text"
             name={name}
             id={name}
             maxLength={maxLength}
+            placeholder=" "
         />
         <label
             className={styles.label}
