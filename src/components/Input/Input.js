@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "../Input/Input.module.scss";
 import * as PropTypes from "prop-types";
 
-const Input = ({tag: Tag, name, label, maxLength}) => (
+const Input = ({tag: Tag, name, label, maxLength,...props}) => (
     <div className={styles.formItem}>
         <Tag
             className={ Tag === 'textarea' ? styles.textarea :styles.input}
@@ -11,6 +11,7 @@ const Input = ({tag: Tag, name, label, maxLength}) => (
             id={name}
             maxLength={maxLength}
             placeholder=" "
+            {...props}
         />
         <label
             className={styles.label}
@@ -28,7 +29,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
     tag: 'input',
-    maxLenght:200,
+    maxLenght:'200',
 }
 
 export default Input;
